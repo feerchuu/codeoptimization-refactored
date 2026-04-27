@@ -7,17 +7,28 @@ package es.dam.codeoptimization.fantasy;
 import es.dam.codeoptimization.PlayerStats;
 
 /**
- * THE CLASS YOU HAVE TO MODIFY
+ * Es una clase que calcula los puntos que recibe un jugador tras sus
+ * actuaciones en los partidos la puntuacion varia.
  *
- * @author Boris
+ * @author Fernando Elcoso Rodriguez
  */
 public class FantasyCalculator {
+    
+    /***
+     * Calcula el total de puntos
+     * @param stats recibe las estadisticas de los jugadores
+     * @return la suma de los metodos calculateCommonPoints y calculatePointsByPosition
+     */
 
     public static int calculatePoints(PlayerStats stats) {
         return calculateCommonPoints(stats) 
                 + calculatePointsByPosition(stats);
     }
-
+/***
+ * Recibe las estadisticas de los jugadores y devuelve los puntos
+ * @param stats son las estadisticas de los jugadores
+ * @return points
+ */
     private static int calculatePointsByPosition(PlayerStats stats) {
         final String GOALKEEPER_STRING = "PORTERO";
         final String DEFENCE_STRING = "DEFENSA";
@@ -44,6 +55,12 @@ public class FantasyCalculator {
         return points;
     }
 
+    /***
+     * Calcula la suma comun de puntos
+     * @param stats recibe las estadisticas de los jugadores
+     * @return los minutos jugados + los puntos por tarjetas y el resultado
+     */
+    
     private static int calculateCommonPoints(PlayerStats stats) {
         return calculateMinutesPlayed(stats.minutes)
                 + calculateYellowCard(stats.yellowCard)
